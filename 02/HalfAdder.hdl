@@ -9,9 +9,14 @@
 
 CHIP HalfAdder {
     IN a, b;    // 1-bit inputs
-    OUT sum,    // Right bit of a + b 
+    OUT sum,    // Right bit of a + b
         carry;  // Left bit of a + b
 
     PARTS:
-    // Put you code here:
+    NOT(in = a, out = nota);
+    NOT(in = b, out = notb);
+    AND(a = a, b = notb, out = o1);
+    AND(a = nota, b = notb, out = o2);
+    OR(a = o1, b = o2, out = sum);
+    AND(a = a, b = b, out = carry);
 }
