@@ -10,9 +10,11 @@ picking up items, and using them on various parts of the environment.
 
 ###commands:
 
-goto [place]: goes to place as long as you can currently see it. can also be used
-to go to cardinal directions (north, south, east, west).
+~~goto [place]: goes to place as long as you can currently see it. can also be used~~
+~~to go to cardinal directions (north, south, east, west).~~
 
-look [object]: gives player info about the object.
+~~look [object]: gives player info about the object.~~
 
-pickup [object]: lets player pick up object.
+~~pickup [object]: lets player pick up object.~~
+
+the game will provide the player with options
