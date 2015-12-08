@@ -1,7 +1,65 @@
 class Main {
   function void main() {
-    do Output.printString("Hello World!");
+    do Output.printString("room with no view");
     do Output.println();
+    do Output.printString("game by andrew ksendzoff");
+    do Output.println();
+    do Output.println();
+
+
+    do Output.printString("welcome player");
+    do Output.println();
+    do Output.printString("it has a room with no view");
+    do Output.println();
+    do Output.println();
+    do Output.println();
+    do Output.println();
+
+
+    field int sel;
+    field bool sword;
+    field bool gem;
+    field bool hat;
+    field bool tree;
+    field bool window;
+
+    let sword = false;
+    let gem = false;
+    let hat = false;
+    let tree = false;
+    let window = false;
+
+    while(true){
+      do fieldPlace();
+      if(sword & gem & hat & tree & window){
+        do Output.printString("it found all the items");
+        do Output.println();
+        do Output.printString("it has a room with a view");
+        break;
+      }
+    }
     return;
   }
+
+  function void fieldPlace() {
+
+  }
+
+  function void forestPlace(){
+
+  }
+
+  function void voidPlace(){
+
+  }
+
+  function void spacePlace(){
+
+  }
+
+  function void cavePlace(){
+
+  }
+
+
 }
