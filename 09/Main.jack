@@ -1,0 +1,22 @@
+class Main {
+  function void main() {
+    var Game g;
+
+    do Output.printString("room with no view");
+    do Output.println();
+    do Output.printString("game by andrew ksendzoff");
+    do Output.println();
+
+    do Output.printString("welcome player");
+    do Output.println();
+    do Output.printString("it has a room with no view");
+    do Output.println();
+
+    let g = Game.new();
+
+    do g.play();
+
+    return;
+  }
+
+}

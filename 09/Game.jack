@@ -1,0 +1,133 @@
+class Game{
+  field boolean sword;
+  field boolean gem;
+  field boolean hat;
+  field boolean tree;
+  field boolean window;
+
+  constructor Game new() {
+    let sword = false;
+    let gem = false;
+    let hat = false;
+    let tree = false;
+    let window = false;
+    return this;
+  }
+
+  method void play(){
+    var int sel;
+
+    while(true){
+
+
+      do Output.printString("it is in a field");
+      do Output.println();
+      if(~hat){
+        do Output.printString("it found a hat hidden between the grass blades");
+        do Output.println();
+        let hat = true;
+      }
+      do Output.printString("it sees a forest (1), a outer space (2), a void (3), and a cave (4)");
+      do Output.println();
+      let sel = Keyboard.readInt("where does it go (select an option)");
+
+      if(sel = 1){
+
+        do Screen.clearScreen();
+
+        do Output.printString("it is in a forest. trees make the forestplace look dark. it heard movement in the shadows");
+        do Output.println();
+        do Output.printString("it thinks about trees keeping making oxygen out of waste gas.");
+        do Output.println();
+        if(~tree){
+          do Output.printString("it sees a tree small enough to keep as a pet.");
+          do Output.println();
+          if(~sword){
+            do Output.printString("it can't bring the tree with it");
+            do Output.println();
+          }
+          else{
+            do Output.printString("it takes the tree to keep as a pet. the tree likes its hat.");
+            do Output.println();
+            let tree = true;
+          }
+
+        }
+
+      }
+
+      if(sel = 2){
+
+        do Screen.clearScreen();
+
+        if(~tree){
+          do Output.printString("it can't breathe in a outerspace. it needs oxygen.");
+          do Output.println();
+        }
+        else{
+
+          do Output.printString("it finds a window in a outerspace");
+          do Output.println();
+          let window = true;
+
+        }
+
+      }
+      if(sel = 3){
+
+        do Screen.clearScreen();
+
+        do Output.printString("it is in the void. it sees emptiness and nothingness");
+        do Output.println();
+        do Output.printString("it sees static the voidplace fills with static nothing but static");
+        do Output.println();
+        do Output.printString("the static fills its soul it feels cold it feels empty");
+        do Output.println();
+        do Output.printString("it feels its heart stop beating everything goes black and white");
+        do Output.println();
+        if(~gem){
+          do Output.printString("it sees a red gem dark red like life blood it needs it");
+          do Output.println();
+          do Output.printString("it needs it it feels its heart pulse red again like the gem");
+          do Output.println();
+          do Output.printString("it takes the gem. everything becomes void again but not black and white");
+          do Output.println();
+          let gem = true;
+        }
+        do Output.printString("it gets the fuck out of the voidplace.");
+        do Output.println();
+
+
+
+      }
+      if(sel = 4){
+
+        do Screen.clearScreen();
+
+        do Output.printString("it is in a cave. it is dark and dank.");
+        do Output.println();
+        if(~gem){
+          do Output.printString("it sees a sword. the sword is missing a piece like a fancy rock");
+          do Output.println();
+        }
+        else{
+          do Output.printString("it sees a sword. it puts the gem into the sword. it takes the sword.");
+          do Output.println();
+          let sword = true;
+        }
+
+
+      }
+
+
+      if(window){
+        do Output.printString("it goes home");
+        do Output.println();
+        do Output.printString("it has a room with a view");
+        do Output.println();
+        return;
+      }
+    }
+    return;
+  }
+}
