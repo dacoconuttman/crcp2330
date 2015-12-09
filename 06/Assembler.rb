@@ -28,12 +28,20 @@ vars["SCREEN"] = 16384
 vars["KBD"] = 24576
 nextVar = 16
 
-#checks if the input file exists and is valid
-if(!ARGV[0] || ARGV.length != 1 || !ARGV[0].end_with?(".asm") ||
-  !File.exist?(ARGV[0]) || !File.readable?(ARGV[0]))
+def args_valid?
+  ARGV[0] && ARGV.length == 1 && ARGV[0].end_with?(".asm")
+end
+
+def file_valid?
+  File.exist?(ARGV[0]) && File.readable?(ARGV[0])
+end
+
+unless(args_valid?)
   abort("Usage: ./Assembler.rb Prog.asm")
 end
 
-puts ARGV[0]
+unless(file_valid?)
+  abort("Error: File not found or is unreadable")
+end
 
-filepath = ARGV[0]
+puts ARGV[0]
