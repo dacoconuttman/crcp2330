@@ -32,16 +32,26 @@ def args_valid?
   ARGV[0] && ARGV.length == 1 && ARGV[0].end_with?(".asm")
 end
 
-def file_valid?
-  File.exist?(ARGV[0]) && File.readable?(ARGV[0])
+def file_valid?(path)
+  File.exist?(path) && File.readable?(path)
 end
 
 unless(args_valid?)
   abort("Usage: ./Assembler.rb Prog.asm")
 end
 
-unless(file_valid?)
+asm_filename = ARGV[0]
+
+unless(file_valid?(asm_filename))
   abort("Error: File not found or is unreadable")
 end
 
-puts ARGV[0]
+File.open(asm_filename) do |asm_file|
+  asm_basename = File.basename(asm_filename, '.asm')
+  path = File.split(asm_filename)[0]
+  hack_filename = "#{path}/#{asm_basename}.hack"
+  File.open(hack_filename) do |hack_file|
+    # assembler = Assembler.new(asm_file, hack_file)
+    # assembler.assemble!
+  end
+end
