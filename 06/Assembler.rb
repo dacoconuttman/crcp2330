@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-#Creates a Hash of all the variable symbols, and stores an int to know where to
-#create user-defined variables
 vars = Hash.new
 vars["SP"] = 0
 vars["LCL"] = 1
@@ -32,11 +30,22 @@ class Assembler
   def initialize(asm_file, hack_file)
     @asm_file = asm_file
     @hack_file = hack_file
+    @asm_insructions = instructions_from_file
+    p @asm_insructions
+    @parser = Parser.new(@asm_insructions)
   end
 
   def assemble!
-    puts @asm_file.read
+    # hack_instructions = Parser.parse_asm
+    # @hack_file << hack_instructions
   end
+
+  def instructions_from_file
+    lines = @asm_file.readlines
+    lines.each{|line| line.gsub! /\/\/.*/, '' ; line.strip!}
+    lines.delete("")
+  end
+
 end
 
 def args_valid?
