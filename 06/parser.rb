@@ -1,46 +1,42 @@
+require_relative "code"
+
 class Parser
   def initialize(assembly_instructions)
     @assembly_instructions = assembly_instructions
     @machine_instructions = []
-    puts @assembly_instructions
-    @vars = Hash.new
-    @vars["SP"] = 0
-    @vars["LCL"] = 1
-    @vars["ARG"] = 2
-    @vars["THIS"] = 3
-    @vars["THAT"] = 4
-    @vars["R0"] = 0
-    @vars["R1"] = 1
-    @vars["R2"] = 2
-    @vars["R3"] = 3
-    @vars["R4"] = 4
-    @vars["R5"] = 5
-    @vars["R6"] = 6
-    @vars["R7"] = 7
-    @vars["R8"] = 8
-    @vars["R9"] = 9
-    @vars["R10"] = 10
-    @vars["R11"] = 11
-    @vars["R12"] = 12
-    @vars["R13"] = 13
-    @vars["R14"] = 14
-    @vars["R15"] = 15
-    @vars["SCREEN"] = 16384
-    @vars["KBD"] = 24576
-    @currVar = 16
-
-    @labels = Hash.new
   end
 
   def parse
     currLine = 0
     @assembly_instructions.each do |instruction|
-      if(instruction.start_with?('@'))
-
-        hack_instructions.push(instruction)
-      elsif
-
+      if command_type(instruction) == :a_command
+        @machine_instructions << assemble_a_command(instruction)
+      elsif  command_type(instruction) == :c_command
+        @machine_instructions << assemble_c_command(instruction)
       end
-
+    end
+    @machine_instructions
   end
+
+  def command_type(instruction)
+    if instruction.start_with?('@')
+      return :a_command
+    else
+      return :c_command
+    end
+  end
+
+  def assemble_a_command(instruction)
+    command = "0"
+    command << constant(instruction[1..-1])
+  end
+
+  def constant(value)
+    "%015b" % value
+  end
+
+  def assemble_c_command(instruction)
+    "1110000000000000"
+  end
+
 end
