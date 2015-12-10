@@ -36,7 +36,8 @@ class Parser
   end
 
   def assemble_c_command(instruction)
-    "1110000000000000"
+    c_parser = Code.new(instruction[2..-1])
+    c_parser.parse
   end
 
 end
