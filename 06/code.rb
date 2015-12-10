@@ -89,7 +89,6 @@ class Code
       comp_part = COMP[comp_and_jump]
       jump_part = "000"
     end
-
     output << comp_part << dest_part << jump_part
   end
 
